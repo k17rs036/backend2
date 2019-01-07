@@ -9,12 +9,12 @@
   <script src="keys.js"></script>
   <script>
     var ncmb = new NCMB(appKey, clientKey);
-    var UTdata = ncmb.DataStore("UpdateTest");
-    var key = "message";
+    var UTdata = ncmb.DataStore("User1");
+    var key = "Weight";
 
     function enterData() {
       var uTdata = new UTdata();
-      var value = parseInt($("#data").val());
+      var value = parseFloat($("#data").val());
       uTdata.set(key, value)
       .save()
       .then(function(results){
@@ -68,7 +68,7 @@
     function updateData() {
       UTdata.fetch()
       .then(function(uTdata){
-        var value = parseInt($("#update").val());
+        var value = parseFloat($("#update").val());
         uTdata.set(key, value);
         return uTdata.update();
       })
@@ -103,9 +103,25 @@
   </script>
 </head>
 <body>
-  <h1>健康管理 システム</h1>
-  <div>
+  <h1>Health</h1>
+  <!-- <div>
     <input type="text" id="data" placeholder="スコア"> 
+    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
+  </div> -->
+  <div>
+    <input type="text" id="data" placeholder="体重"> 
+    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
+  </div>
+    <div>
+    <input type="text" id="data" placeholder="体脂肪"> 
+    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
+  </div>
+    <div>
+    <input type="text" id="data" placeholder="筋肉量"> 
+    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
+  </div>
+    <div>
+    <input type="text" id="data" placeholder="基礎代謝"> 
     <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
   </div>
   <div>
