@@ -11,6 +11,9 @@
     var ncmb = new NCMB(appKey, clientKey);
     var UTdata = ncmb.DataStore("User1");
     var key = "Weight";
+    var key1 = "Fat";
+    // var key2 = "Muscle";
+    // var key = "Metab";
 
     function enterData() {
       var uTdata = new UTdata();
@@ -27,7 +30,39 @@
         $("#display").addClass("bg-warning");
         $("#display").html("enter fail");
       })
+
+      var uTdata = new UTdata();
+      var value1 = parseFloat($("#data1").val());
+      uTdata.set(key1, value1)
+      .save()
+      .then(function(results){
+        $("#display").removeClass();
+        $("#display").addClass("bg-success");
+        $("#display").html("enter success");
+      })
+      .catch(function(results){
+        $("#display").removeClass();
+        $("#display").addClass("bg-warning");
+        $("#display").html("enter fail");
+      })
+
+      //       var uTdata = new UTdata();
+      // var value = parseFloat($("#data").val());
+      // uTdata.set(key2, value)
+      // .save()
+      // .then(function(results){
+      //   $("#display").removeClass();
+      //   $("#display").addClass("bg-success");
+      //   $("#display").html("enter success");
+      // })
+      // .catch(function(results){
+      //   $("#display").removeClass();
+      //   $("#display").addClass("bg-warning");
+      //   $("#display").html("enter fail");
+      // })
     }
+
+
 
     function fetchAll() {
       UTdata.fetchAll()
@@ -100,6 +135,7 @@
 
     function sortData() {
     }
+
   </script>
 </head>
 <body>
@@ -108,12 +144,13 @@
     <input type="text" id="data" placeholder="スコア"> 
     <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
   </div> -->
+
   <div>
-    <input type="text" id="data" placeholder="体重"> 
+    <input type="text" id="data" placeholder="体重 例:68.3"> 
     <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
   </div>
     <div>
-    <input type="text" id="data" placeholder="体脂肪"> 
+    <input type="text" id="data1" placeholder="体脂肪"> 
     <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
   </div>
     <div>
