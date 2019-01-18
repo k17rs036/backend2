@@ -10,15 +10,22 @@
   <script>
     var ncmb = new NCMB(appKey, clientKey);
     var UTdata = ncmb.DataStore("User1");
-    var key = "Weight";
-    var key1 = "Fat";
-    // var key2 = "Muscle";
-    // var key = "Metab";
+    var key = "1Weight";
+    var key1 = "2Fat";
+    var key2 = "3Muscle";
+    var key3 = "4Metab";
 
     function enterData() {
       var uTdata = new UTdata();
       var value = parseFloat($("#data").val());
+      var value1 = parseFloat($("#data1").val());
+      var value2 = parseFloat($("#data2").val());
+      var value3 = parseFloat($("#data3").val());
       uTdata.set(key, value)
+      uTdata.set(key1, value1)
+      uTdata.set(key2, value2)
+      uTdata.set(key3, value3)
+
       .save()
       .then(function(results){
         $("#display").removeClass();
@@ -31,20 +38,20 @@
         $("#display").html("enter fail");
       })
 
-      var uTdata = new UTdata();
-      var value1 = parseFloat($("#data1").val());
-      uTdata.set(key1, value1)
-      .save()
-      .then(function(results){
-        $("#display").removeClass();
-        $("#display").addClass("bg-success");
-        $("#display").html("enter success");
-      })
-      .catch(function(results){
-        $("#display").removeClass();
-        $("#display").addClass("bg-warning");
-        $("#display").html("enter fail");
-      })
+      // var uTdata = new UTdata();
+//      var value1 = parseFloat($("#data1").val());
+//      uTdata.set(key1, value1)
+      // .save()
+      // .then(function(results){
+      //   $("#display").removeClass();
+      //   $("#display").addClass("bg-success");
+      //   $("#display").html("enter success");
+      // })
+      // .catch(function(results){
+      //   $("#display").removeClass();
+      //   $("#display").addClass("bg-warning");
+      //   $("#display").html("enter fail");
+      // })
 
       //       var uTdata = new UTdata();
       // var value = parseFloat($("#data").val());
@@ -139,7 +146,8 @@
   </script>
 </head>
 <body>
-  <h1>Health</h1>
+  <h1>Health care</h1>
+  <h2></h2>
   <!-- <div>
     <input type="text" id="data" placeholder="スコア"> 
     <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
@@ -147,19 +155,16 @@
 
   <div>
     <input type="text" id="data" placeholder="体重 例:68.3"> 
-    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
+    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">登録</a>
   </div>
     <div>
     <input type="text" id="data1" placeholder="体脂肪"> 
-    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
   </div>
     <div>
-    <input type="text" id="data" placeholder="筋肉量"> 
-    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
+    <input type="text" id="data2" placeholder="筋肉量"> 
   </div>
     <div>
-    <input type="text" id="data" placeholder="基礎代謝"> 
-    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
+    <input type="text" id="data3" placeholder="基礎代謝"> 
   </div>
   <div>
     <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch All</a>
