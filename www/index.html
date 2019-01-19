@@ -21,6 +21,7 @@
       var value1 = parseFloat($("#data1").val());
       var value2 = parseFloat($("#data2").val());
       var value3 = parseFloat($("#data3").val());
+      //var update=results.get("updateDate");
       uTdata.set(key, value)
       uTdata.set(key1, value1)
       uTdata.set(key2, value2)
@@ -73,14 +74,16 @@
       var User1 = ncmb.DataStore("User1");
       User1.fetchAll()
       .then(function(results){
-        var msg="";
+        var msg="<table border='1' rules='all'>";
+        msg += "<tr><th>体重</th><th>体脂肪</th><th>筋肉量</th><th>基礎代謝</th></tr>";
         for(var i =0; i<results.length; i++){
           var data=results[i].get("1Weight");
           var data1=results[i].get("2Fat");
           var data2=results[i].get("3Muscle");
           var data3=results[i].get("4Metab");
-          var update=results[i].get("updateData")
-          msg +=  data + ":" + data1 + ":" + data2 + ":" +data3;
+          //var update=results[i].get("updateDate");
+          //msg += data + ":" + data1 + ":" + data2 + ":" +data3 + "<br>";
+          msg += "<tr><td>" + data + "</td><td>" + data1 + "</td><td>" + data2 +"</td><td>" + data3 + "</td></tr>";
         }
         $("#display").removeClass();
         $("#display").addClass("text-light");
@@ -197,17 +200,17 @@
   </div> -->
 
   <div>
-    <input type="text" id="data" placeholder="体重 例:68.3"> 
+    <input type="text" id="data" placeholder="体重 例:68.3(kg)"> 
     <!-- <a onclick="enterData()" class="btn btn-outline-secondary" role="button">登録</a> -->
   </div>
     <div>
-    <input type="text" id="data1" placeholder="体脂肪"> 
+    <input type="text" id="data1" placeholder="体脂肪 例:10(%)"> 
   </div>
     <div>
-    <input type="text" id="data2" placeholder="筋肉量"> 
+    <input type="text" id="data2" placeholder="筋肉量 例:40(%)"> 
   </div>
     <div>
-    <input type="text" id="data3" placeholder="基礎代謝"> 
+    <input type="text" id="data3" placeholder="基礎代謝 例:1700(kcal)"> 
   </div>
   <div>
     <a onclick="enterData()" class="btn btn-outline-secondary" role="button">登録</a>
