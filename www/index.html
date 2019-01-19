@@ -10,33 +10,39 @@
   <script>
     var ncmb = new NCMB(appKey, clientKey);
     var UTdata = ncmb.DataStore("User1");
+    var key0 = "0Height";
     var key = "1Weight";
     var key1 = "2Fat";
     var key2 = "3Muscle";
     var key3 = "4Metab";
+   // var key4 = "5Bim"
 
     function enterData() {
       var uTdata = new UTdata();
+      var value0 = parseFloat($("#data0").val());
       var value = parseFloat($("#data").val());
       var value1 = parseFloat($("#data1").val());
       var value2 = parseFloat($("#data2").val());
       var value3 = parseFloat($("#data3").val());
+     // var value4 = data/(data0*data0*0.0001)($("#data4")).val());
       //var update=results.get("updateDate");
+      uTdata.set(key0, value0)
       uTdata.set(key, value)
       uTdata.set(key1, value1)
       uTdata.set(key2, value2)
       uTdata.set(key3, value3)
+     // uTdata.set(key4, value4)
 
       .save()
       .then(function(results){
         $("#display").removeClass();
         $("#display").addClass("bg-success");
-        $("#display").html("enter success");
+        $("#display").html("登録完了");
       })
       .catch(function(results){
         $("#display").removeClass();
         $("#display").addClass("bg-warning");
-        $("#display").html("enter fail");
+        $("#display").html("登録失敗");
       })
 
       // var uTdata = new UTdata();
@@ -75,15 +81,18 @@
       User1.fetchAll()
       .then(function(results){
         var msg="<table border='1' rules='all'>";
-        msg += "<tr><th>体重</th><th>体脂肪</th><th>筋肉量</th><th>基礎代謝</th></tr>";
+        msg += "<tr><th>身長</th><th>体重</th><th>体脂肪</th><th>筋肉量</th><th>基礎代謝</th><th>BMI</th></tr>";
         for(var i =0; i<results.length; i++){
+          var data0=results[i].get("0Height");
           var data=results[i].get("1Weight");
           var data1=results[i].get("2Fat");
           var data2=results[i].get("3Muscle");
           var data3=results[i].get("4Metab");
+          var update=results[i].get("updateData");
+          //var data4=results[i].get("5Bmi");
           //var update=results[i].get("updateDate");
           //msg += data + ":" + data1 + ":" + data2 + ":" +data3 + "<br>";
-          msg += "<tr><td>" + data + "</td><td>" + data1 + "</td><td>" + data2 +"</td><td>" + data3 + "</td></tr>";
+          msg += "<tr><td>" + data0 + " cm" +"</td><td>"+data +" kg"+ "</td><td>" + data1 +" %" + "</td><td>" + data2 +" %" +"</td><td>" + data3 +" kcal" + "</td><td>"+ Math.round(data/(data0*data0*0.0001))+"</td></tr>";
         }
         $("#display").removeClass();
         $("#display").addClass("text-light");
@@ -93,7 +102,7 @@
       .catch(function(error){
         $("#display").removeClass();
         $("#display").addClass("bg-warning");
-        $("#display").html("delete fail:" + JSON.stringify(error));
+        $("#display").html("削除失敗:" + JSON.stringify(error));
       })
     }
 
@@ -140,16 +149,17 @@
       UTdata.fetch()
       .then(function(uTdata){
         return uTdata.delete();
+        
       })
       .then(function(results){
         $("#display").removeClass();
         $("#display").addClass("bg-success");
-        $("#display").html("delete success");
+        $("#display").html("削除成功");
       })
       .catch(function(error){
         $("#display").removeClass();
         $("#display").addClass("bg-warning");
-        $("#display").html("delete fall:" + JSON.stringify(error));
+        $("#display").html("削除失敗:" + JSON.stringify(error));
       })
     }
 
@@ -186,8 +196,8 @@
       })
     }
 
-    function sortData() {
-    }
+    // function sortData() {
+    // }
 
   </script>
 </head>
@@ -198,28 +208,31 @@
     <input type="text" id="data" placeholder="スコア"> 
     <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
   </div> -->
+  <div id = "textbox">
+    <input type="text" id="data0" placeholder="身長 例:182(cm)"> 
 
-  <div>
+  <!-- <div>  -->
     <input type="text" id="data" placeholder="体重 例:68.3(kg)"> 
     <!-- <a onclick="enterData()" class="btn btn-outline-secondary" role="button">登録</a> -->
-  </div>
-    <div>
+  <!-- </div>
+    <div> -->
     <input type="text" id="data1" placeholder="体脂肪 例:10(%)"> 
-  </div>
-    <div>
+  <!-- </div>
+    <div> -->
     <input type="text" id="data2" placeholder="筋肉量 例:40(%)"> 
-  </div>
-    <div>
+  <!-- </div>
+    <div> -->
     <input type="text" id="data3" placeholder="基礎代謝 例:1700(kcal)"> 
   </div>
-  <div>
+  <div1>
+
+  </div1>
+  <div id = "button">
     <a onclick="enterData()" class="btn btn-outline-secondary" role="button">登録</a>
-  </div>
-  <div>
-    <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch All</a>
-    <a onclick="deleteData()" class="btn btn-outline-primary" role="buton">Delete</a>
-    <a onclick="countData()" class="btn btn-outline-primary" role="button">Count</a>
-    <a onclick="sortData()" class="btn btn-outline-primary" role="button">Sort</a>
+    <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">記録一覧</a>
+    <a id = "del" onclick="deleteData()" class="btn btn-outline-primary" role="buton">削除</a>
+    <a onclick="countData()" class="btn btn-outline-primary" role="button">記録数</a>
+    <!-- <a onclick="sortData()" class="btn btn-outline-primary" role="button">Sort</a> -->
   </div>
   <!-- <div>
     <input type="text" id="update" placeholder="更新">
@@ -227,6 +240,6 @@
   </div> -->
   <div id="display" class="text-light bg-info">
     Results
-  </div>
+  <!-- </div> -->
 </body>
 </html>
