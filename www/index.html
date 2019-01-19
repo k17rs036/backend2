@@ -195,6 +195,35 @@
         $("#display").html("update fall:" + JSON.stringify(error));
       })
     }
+    // function BMI(){
+    //  .then(function(results){
+    // var msg="<table border='1' rules='all'>";
+    // msg +="<tr><th>状態</th><th>BMI</th></tr>";
+    // msg += "<tr><th>"+"低体重(やせ)"+"</th><th>"+"18.5未満"+"</th></tr>"
+    // <tr><th>普通体重</th><th>18.5以上25未満</th></tr>
+    // <tr><th>肥満(1度)</th><th>25以上30未満</th></tr>
+    // <tr><th>肥満(2度)</th><th>30以上35未満</th></tr>
+    // <tr><th>肥満(3度)</th><th>35以上40未満</th></tr>
+    // <tr><th>肥満(4度)</th><th>40以上</th></tr>
+    // }
+    // msg += "</table>";
+    // $("#fetch").html(msg);
+    //  )
+      //   $("#display").removeClass();
+      //   $("#display").addClass("text-light");
+      //   $("#display").addClass("bg-primary");
+      //   $("#display").html(msg);
+      // })
+      // .catch(function(error){
+      //   $("#display").removeClass();
+      //   $("#display").addClass("bg-warning");
+      //   $("#display").html("削除失敗:" + JSON.stringify(error));
+      // })
+   // }
+    
+      
+
+    
 
     // function sortData() {
     // }
@@ -209,20 +238,25 @@
     <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
   </div> -->
   <div id = "textbox">
-    <input type="text" id="data0" placeholder="身長 例:182(cm)"> 
+    身長:
+    <input type="text" id="data0" placeholder=" 例:182(cm)"> 
 
-  <!-- <div>  -->
-    <input type="text" id="data" placeholder="体重 例:68.3(kg)"> 
+  <div>
+    体重:
+    <input type="text" id="data" placeholder=" 例:68.3(kg)"> 
     <!-- <a onclick="enterData()" class="btn btn-outline-secondary" role="button">登録</a> -->
-  <!-- </div>
-    <div> -->
-    <input type="text" id="data1" placeholder="体脂肪 例:10(%)"> 
-  <!-- </div>
-    <div> -->
-    <input type="text" id="data2" placeholder="筋肉量 例:40(%)"> 
-  <!-- </div>
-    <div> -->
-    <input type="text" id="data3" placeholder="基礎代謝 例:1700(kcal)"> 
+  </div>
+    <div>
+      脂肪:
+    <input type="text" id="data1" placeholder=" 例:10(%)"> 
+  </div>
+    <div>
+      筋肉:
+    <input type="text" id="data2" placeholder=" 例:40(%)"> 
+  </div>
+    <div>
+      代謝:
+    <input type="text" id="data3" placeholder=" 例:1700(kcal)"> 
   </div>
   <div1>
 
@@ -232,8 +266,22 @@
     <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">記録一覧</a>
     <a id = "del" onclick="deleteData()" class="btn btn-outline-primary" role="buton">削除</a>
     <a onclick="countData()" class="btn btn-outline-primary" role="button">記録数</a>
+    <!-- <a onclick="BMI()" class="btn btn-outline-primary" role="button">BMI -->
+    <!-- </a> -->
     <!-- <a onclick="sortData()" class="btn btn-outline-primary" role="button">Sort</a> -->
   </div>
+  <!-- <div id ="BMI">
+    <table border='1' rules='all'>
+    <tr><th>状態</th><th>BMI</th></tr>
+    <tr><th>低体重(やせ)</th><th>18.5未満</th></tr>
+    <tr><th>普通体重</th><th>18.5以上25未満</th></tr>
+    <tr><th>肥満(1度)</th><th>25以上30未満</th></tr>
+    <tr><th>肥満(2度)</th><th>30以上35未満</th></tr>
+    <tr><th>肥満(3度)</th><th>35以上40未満</th></tr>
+    <tr><th>肥満(4度)</th><th>40以上</th></tr>
+    </div> -->
+
+
   <!-- <div>
     <input type="text" id="update" placeholder="更新">
     <a onclick="updateData()" class="btn btn-outline-primary" role="button">Update</a>
