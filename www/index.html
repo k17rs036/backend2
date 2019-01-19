@@ -187,7 +187,7 @@
       .then(function(results){
         $("#display").removeClass();
         $("#display").addClass("bg-success");
-        $("#display").html(results.count);
+        $("#display").html(results.count+"個");
       })
       .catch(function(error){
         $("#display").removeClass();
@@ -262,7 +262,7 @@
 
   </div1>
   <div id = "button">
-    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">登録</a>
+    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">記録</a>
     <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">記録一覧</a>
     <a id = "del" onclick="deleteData()" class="btn btn-outline-primary" role="buton">削除</a>
     <a onclick="countData()" class="btn btn-outline-primary" role="button">記録数</a>
