@@ -89,10 +89,24 @@
           var data2=results[i].get("3Muscle");
           var data3=results[i].get("4Metab");
           var update=results[i].get("updateData");
+          BMI=Math.round(data/(data0*data0*0.0001));
+          if(BMI<18.5){
+            BMI=BMI+" 低体重(やせ)"
+          }else if(BMI>=18.5&&BMI<25){
+            BMI=BMI+" 普通体重"
+          }else if(BMI>=25&&BMI<30){
+            BMI=BMI+" 肥満(1度)"
+          }else if(BMI>=30&&BMI<35){
+            BMI=BMI+" 肥満(2度)"
+          }else if(BMI>=35&&BMI<40){
+            BMI=BMI+" 肥満(3度)"
+          }else if(BMI>=40){
+            BMI=BMI+" 肥満(4度)"
+          }
           //var data4=results[i].get("5Bmi");
           //var update=results[i].get("updateDate");
           //msg += data + ":" + data1 + ":" + data2 + ":" +data3 + "<br>";
-          msg += "<tr><td>" + data0 + " cm" +"</td><td>"+data +" kg"+ "</td><td>" + data1 +" %" + "</td><td>" + data2 +" %" +"</td><td>" + data3 +" kcal" + "</td><td>"+ Math.round(data/(data0*data0*0.0001))+"</td></tr>";
+          msg += "<tr><td>" + data0 + " cm" +"</td><td>"+data +" kg"+ "</td><td>" + data1 +" %" + "</td><td>" + data2 +" %" +"</td><td>" + data3 +" kcal" + "</td><td>"+ BMI+"</td></tr>";
         }
         $("#display").removeClass();
         $("#display").addClass("text-light");
