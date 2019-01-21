@@ -15,7 +15,6 @@
     var key1 = "2Fat";
     var key2 = "3Muscle";
     var key3 = "4Metab";
-   // var key4 = "5Bim"
 
     function enterData() {
       var uTdata = new UTdata();
@@ -24,14 +23,11 @@
       var value1 = parseFloat($("#data1").val());
       var value2 = parseFloat($("#data2").val());
       var value3 = parseFloat($("#data3").val());
-     // var value4 = data/(data0*data0*0.0001)($("#data4")).val());
-      //var update=results.get("updateDate");
       uTdata.set(key0, value0)
       uTdata.set(key, value)
       uTdata.set(key1, value1)
       uTdata.set(key2, value2)
       uTdata.set(key3, value3)
-     // uTdata.set(key4, value4)
 
       .save()
       .then(function(results){
@@ -45,35 +41,7 @@
         $("#display").html("登録失敗");
       })
 
-      // var uTdata = new UTdata();
-//      var value1 = parseFloat($("#data1").val());
-//      uTdata.set(key1, value1)
-      // .save()
-      // .then(function(results){
-      //   $("#display").removeClass();
-      //   $("#display").addClass("bg-success");
-      //   $("#display").html("enter success");
-      // })
-      // .catch(function(results){
-      //   $("#display").removeClass();
-      //   $("#display").addClass("bg-warning");
-      //   $("#display").html("enter fail");
-      // })
 
-      //       var uTdata = new UTdata();
-      // var value = parseFloat($("#data").val());
-      // uTdata.set(key2, value)
-      // .save()
-      // .then(function(results){
-      //   $("#display").removeClass();
-      //   $("#display").addClass("bg-success");
-      //   $("#display").html("enter success");
-      // })
-      // .catch(function(results){
-      //   $("#display").removeClass();
-      //   $("#display").addClass("bg-warning");
-      //   $("#display").html("enter fail");
-      // })
     }
 
     function fetchAll(){
@@ -88,7 +56,6 @@
           var data1=results[i].get("2Fat");
           var data2=results[i].get("3Muscle");
           var data3=results[i].get("4Metab");
-          //var update=results[i].get("updateData");
           BMI=Math.round(data/(data0*data0*0.0001)*10)/10;
           if(BMI<18.5){
             BMI=BMI+" 低体重(やせ)"
@@ -103,9 +70,6 @@
           }else if(BMI>=40){
             BMI=BMI+" 肥満(4度)"
           }
-          //var data4=results[i].get("5Bmi");
-          //var update=results[i].get("updateDate");
-          //msg += data + ":" + data1 + ":" + data2 + ":" +data3 + "<br>";
           msg += "<tr><td>" + data0 + " cm" +"</td><td>"+data +" kg"+ "</td><td>" + data1 +" %" + "</td><td>" + data2 +" %" +"</td><td>" + data3 +" kcal" + "</td><td>"+ BMI+"</td></tr>";
         }
         $("#display").removeClass();
@@ -119,45 +83,6 @@
         $("#display").html("削除失敗:" + JSON.stringify(error));
       })
     }
-
-
-
-    // function fetchAll() {
-    //   var Health = ncmb.DataStore("User1");
-    //   User1.fetchAll()
-    //   .than(function(results){
-    //     var msg="<table border='1' rules='all'>";
-    //     msg+="<tr><th>1Weight</th><th>2Fat</th><th>3Muscle</th><th>4Metab</th><th>Update Data</th><tr>"
-    //     for(var i=0; i<results.length; i++){
-    //       var data = results[i].get("1Weight");
-    //       var data1 = results[i].get("2Fat");
-    //       var data2 = results[i].get("3Muscle");
-    //       var data3 = results[i].get("4Metab");
-    //       var update=results[i].get("updateDate");
-    //       msg += "<tr><td>"+data+"</td><td>"+data1+"</td><td>"+data2+"</td><td>"+data3+"</td><td>" + update +"</td><tr>";
-    //   }
-    //   $("#fetch").html(msg);
-    //   })
-    // }
-      // UTdata.fetchAll()
-      // .then(function(results){
-      //   var msg="";
-      //   for(var i=0; i<results.length; i++){
-      //     msg += results[i].get(key) +"<br>";
-      //   }
-      //   $("#display").removeClass();
-      //   $("#display").addClass("text-light");
-      //   $("#display").addClass("bg-primary");
-      //   $("#display").html(msg);
-      // })
-      // .catch(function(error){
-      //   $("#display").removeClass();
-      //   $("#display").addClass("bg-warning");
-      //   $("#display").html("delete fail:" + JSON.stringify(error));
-      // })
-
-
-    
 
     function deleteData() {
       UTdata.fetch()
@@ -177,25 +102,6 @@
       })
     }
 
-    // function updateData() {
-    //   UTdata.fetch()
-    //   .then(function(uTdata){
-    //     var value = parseFloat($("#update").val());
-    //     uTdata.set(key, value);
-    //     return uTdata.update();
-    //   })
-    //   .then(function(results){
-    //     $("#display").removeClass();
-    //     $("#display").addClass("bg-success");
-    //     $("#display").html("update success");
-    //   })
-    //   .catch(function(error){
-    //     $("#display").removeClass();
-    //     $("#display").addClass("bg-warning");
-    //     $("#display").html("update fall:" + JSON.stringify(error));
-    //   })
-    // }
-
     function countData() {
       UTdata.count().fetchAll()
       .then(function(results){
@@ -209,48 +115,12 @@
         $("#display").html("update fall:" + JSON.stringify(error));
       })
     }
-    // function BMI(){
-    //  .then(function(results){
-    // var msg="<table border='1' rules='all'>";
-    // msg +="<tr><th>状態</th><th>BMI</th></tr>";
-    // msg += "<tr><th>"+"低体重(やせ)"+"</th><th>"+"18.5未満"+"</th></tr>"
-    // <tr><th>普通体重</th><th>18.5以上25未満</th></tr>
-    // <tr><th>肥満(1度)</th><th>25以上30未満</th></tr>
-    // <tr><th>肥満(2度)</th><th>30以上35未満</th></tr>
-    // <tr><th>肥満(3度)</th><th>35以上40未満</th></tr>
-    // <tr><th>肥満(4度)</th><th>40以上</th></tr>
-    // }
-    // msg += "</table>";
-    // $("#fetch").html(msg);
-    //  )
-      //   $("#display").removeClass();
-      //   $("#display").addClass("text-light");
-      //   $("#display").addClass("bg-primary");
-      //   $("#display").html(msg);
-      // })
-      // .catch(function(error){
-      //   $("#display").removeClass();
-      //   $("#display").addClass("bg-warning");
-      //   $("#display").html("削除失敗:" + JSON.stringify(error));
-      // })
-   // }
-    
-      
-
-    
-
-    // function sortData() {
-    // }
 
   </script>
 </head>
 <body>
   <h1>Health care</h1>
   <h2></h2>
-  <!-- <div>
-    <input type="text" id="data" placeholder="スコア"> 
-    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
-  </div> -->
   <div id = "textbox">
     身長:
     <input type="text" id="data0" placeholder=" 例:182(cm)"> 
@@ -258,7 +128,6 @@
   <div>
     体重:
     <input type="text" id="data" placeholder=" 例:68.3(kg)"> 
-    <!-- <a onclick="enterData()" class="btn btn-outline-secondary" role="button">登録</a> -->
   </div>
     <div>
       脂肪:
@@ -280,28 +149,9 @@
     <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">記録一覧</a>
     <a id = "del" onclick="deleteData()" class="btn btn-outline-primary" role="buton">削除</a>
     <a onclick="countData()" class="btn btn-outline-primary" role="button">記録数</a>
-    <!-- <a onclick="BMI()" class="btn btn-outline-primary" role="button">BMI -->
-    <!-- </a> -->
-    <!-- <a onclick="sortData()" class="btn btn-outline-primary" role="button">Sort</a> -->
   </div>
-  <!-- <div id ="BMI">
-    <table border='1' rules='all'>
-    <tr><th>状態</th><th>BMI</th></tr>
-    <tr><th>低体重(やせ)</th><th>18.5未満</th></tr>
-    <tr><th>普通体重</th><th>18.5以上25未満</th></tr>
-    <tr><th>肥満(1度)</th><th>25以上30未満</th></tr>
-    <tr><th>肥満(2度)</th><th>30以上35未満</th></tr>
-    <tr><th>肥満(3度)</th><th>35以上40未満</th></tr>
-    <tr><th>肥満(4度)</th><th>40以上</th></tr>
-    </div> -->
 
-
-  <!-- <div>
-    <input type="text" id="update" placeholder="更新">
-    <a onclick="updateData()" class="btn btn-outline-primary" role="button">Update</a>
-  </div> -->
   <div id="display" class="text-light bg-info">
     結果
-  <!-- </div> -->
 </body>
 </html>
