@@ -89,7 +89,7 @@
           var data2=results[i].get("3Muscle");
           var data3=results[i].get("4Metab");
           //var update=results[i].get("updateData");
-          BMI=Math.round(data/(data0*data0*0.0001));
+          BMI=Math.round(data/(data0*data0*0.0001)*10)/10;
           if(BMI<18.5){
             BMI=BMI+" 低体重(やせ)"
           }else if(BMI>=18.5&&BMI<25){
